@@ -38,15 +38,6 @@ lista_t* lista_cria(void);
  */
 lista_t* lista_insere( lista_t* l, void* dado );
 
-/* retorna se a lista esta vazia (true), ou false caso contrario */
-int lista_vazia( lista_t* l );
-
-/* busca um elemento na lista por meio da funcao f():
-  bool f(void* a, void* b) {}
-  que retonar 'true' caso a e b sejam iguais.
-*/
-int lista_busca( lista_t* l, void* dado, int (*f)(void*, void*)  );
-
 /* remove da lista o elemento que contem 'dado'.  Se lista ficar vazia, retorna NULL.
    Se nao encontrou, retorna a lista 'l'.
    Senao, o elemento removido deve ser liberado com free. ATENCAO: nao liberar o dado.
@@ -57,4 +48,13 @@ lista_t* lista_remove( lista_t* l, void* dado, int (*f)(void*, void*)  );
  * ATENÇÃO: não libera memória dos dados.
  */
 void lista_destroi( lista_t* l );
+
+/* retorna se a lista esta vazia (true), ou false caso contrario */
+int lista_vazia( lista_t* l );
+
+/* busca um elemento na lista por meio da funcao f():
+  bool f(void* a, void* b) {}
+  que retonar 'true' caso a e b sejam iguais.
+*/
+int lista_busca( lista_t* l, void* dado, int (*f)(void*, void*)  );
 

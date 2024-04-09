@@ -127,5 +127,71 @@ TEST_CASE("teste busca") {
     free(p2);
 }
 
+TEST_CASE("teste remove 1") {
+    lista_t *l;
+    ponto_t        *p1;
+    l = lista_cria();
+    REQUIRE( lista_vazia(l) != 0 );
+    p1 = (ponto_t *) malloc(sizeof(ponto_t));
+	p1->x = p1->y = 1.0;
+    l = lista_insere(l, (void *)p1);
+    REQUIRE( lista_vazia(l) == 0 );
+    REQUIRE( lista_busca(l, p1, compara) == 1 );
+    l = lista_remove(l, p1, compara);
+    REQUIRE( lista_busca(l, p1, compara) == 0 );
+    REQUIRE( lista_vazia(l) != 0 );
+    lista_destroi(l);
+    free(p1);
+}
 
+TEST_CASE("teste remove 2") {
+    lista_t *l;
+    ponto_t        *p1, *p2;
+    l = lista_cria();
+    REQUIRE( lista_vazia(l) != 0 );
+    p1 = (ponto_t *) malloc(sizeof(ponto_t));
+	p1->x = p1->y = 1.0;
+	p2 = (ponto_t *) malloc(sizeof(ponto_t));
+	p2->x = p2->y = 2.0;
+    l = lista_insere(l, (void *)p1);
+    l = lista_insere(l, (void *)p2);
+    REQUIRE( lista_vazia(l) == 0 );
+    REQUIRE( lista_busca(l, p1, compara) == 1 );
+    REQUIRE( lista_busca(l, p2, compara) == 1 );
+    l = lista_remove(l, p1, compara);
+    REQUIRE( lista_vazia(l) == 0 );
+    REQUIRE( lista_busca(l, p1, compara) == 0 );
+    REQUIRE( lista_busca(l, p2, compara) == 1 );
+    lista_destroi(l);
+    free(p1);
+    free(p2);
+}
 
+TEST_CASE("teste remove 3") {
+    lista_t *l;
+    ponto_t        *p1, *p2, *p3;
+    l = lista_cria();
+    REQUIRE( lista_vazia(l) != 0 );
+    p1 = (ponto_t *) malloc(sizeof(ponto_t));
+	p1->x = p1->y = 1.0;
+	p2 = (ponto_t *) malloc(sizeof(ponto_t));
+	p2->x = p2->y = 2.0;
+	p3 = (ponto_t *) malloc(sizeof(ponto_t));
+	p3->x = p3->y = 3.0;
+    l = lista_insere(l, (void *)p1);
+    l = lista_insere(l, (void *)p2);
+    l = lista_insere(l, (void *)p3);
+    REQUIRE( lista_vazia(l) == 0 );
+    REQUIRE( lista_busca(l, p1, compara) == 1 );
+    REQUIRE( lista_busca(l, p2, compara) == 1 );
+    REQUIRE( lista_busca(l, p3, compara) == 1 );
+    l = lista_remove(l, p2, compara);
+    REQUIRE( lista_vazia(l) == 0 );
+    REQUIRE( lista_busca(l, p1, compara) == 1 );
+    REQUIRE( lista_busca(l, p3, compara) == 1 );
+    REQUIRE( lista_busca(l, p2, compara) == 0 );
+    lista_destroi(l);
+    free(p1);
+    free(p2);
+    free(p3);
+}
