@@ -1,13 +1,14 @@
 
 # TDD - Lista duplamente encadeada
 
-Este é o código exemplo do trabalho usando TDD (*Test Driven Development*) com o framework C++ [Catch2](https://github.com/catchorg/Catch2).
+Este é o código exemplo da atividade usando TDD (*Test Driven Development*) com o framework C++ [Catch2](https://github.com/catchorg/Catch2).
 
 ## Tarefa
 
 Modifique o arquivo [lista.c](lista.c) para completar as funções:
 - `lista_insere`: insere um novo elemento na lista, retorna a lista atualizada, ou seja, o novo 1o elemento.
 - `lista_destroi`: libera a memória de cada elemento da lista, não deve liberar a memória dos dados.
+- `lista_remove`: remove um elemento da lista baseado no valor passado, não deve liberar a memória do dado.
 
 O resultado estará disponível na aba **Actions** do Github a cada alteração.
 

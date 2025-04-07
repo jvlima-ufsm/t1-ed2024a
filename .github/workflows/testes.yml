@@ -1,4 +1,4 @@
-name: TDD A2 - ed2024a
+name: TDD A4 - ed2025a
 
 on:
   push:
@@ -10,9 +10,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Instala valgrind
       run: sudo apt install -y valgrind
     - name: Compila catch
